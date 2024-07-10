@@ -21,6 +21,9 @@ type
     Edit3: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,6 +32,7 @@ type
 
 var
   Form1: TForm1;
+  a : string;
 
 implementation
 
@@ -39,14 +43,6 @@ uses
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  if Edit1.Text = '' then
-  begin
-    ShowMessage('Nama satuan Tidak Boleh Kosong!');
-  end else
-  if DataModule2.ZQuery1.Locate('Name',Edit1.Text,[]) then
-  begin
-    ShowMessage('Name satuan'+Edit1.Text+' Sudah Ada Dalam Sistem');
-  end else
   begin
   DataModule2.ZQuery1.SQL.Clear;
   DataModule2.ZQuery1.SQL.Add('insert into satuan values(null,"'+Edit1.Text+'","'+Edit2.Text+'")');
@@ -63,11 +59,7 @@ procedure TForm1.Button2Click(Sender: TObject);
 begin
   if Edit1.Text = '' then
   begin
-    ShowMessage('Nama satuan Tidak Boleh Kosong!');
-  end else
-  if Edit1.Text = DataModule2.ZQuery1.Fields[1].AsString then
-  begin
-    ShowMessage('Name satuan'+Edit1.Text+' Tidak Ada Perubahan');
+    ShowMessage('Name satuan Tidak Boleh Kosong!');
   end else
   begin
   DataModule2.ZQuery1.SQL.Clear;
@@ -77,9 +69,36 @@ begin
   DataModule2.ZQuery1.SQL.Clear;
   DataModule2.ZQuery1.SQL.Add('select * from satuan');
   DataModule2.ZQuery1.Open;
-  ShowMessage('Data Berhasil diUpdate!');
+  ShowMessage('Data Berhasil diEdit!');
   end;
 
+end;
+
+procedure TForm1.DBGrid1CellClick(Column: TColumn);
+begin
+  Edit1.Text:= DataModule2.ZQuery1.Fields[1].AsString;
+  Edit2.Text:= DataModule2.ZQuery1.Fields[2].AsString;
+  a:= DataModule2.ZQuery1.Fields[0].AsString;
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  begin
+  DataModule2.ZQuery1.SQL.Clear;
+  DataModule2.ZQuery1.SQL.Add('delete from satuan where Id="'+a+'"');
+  DataModule2.ZQuery1.ExecSQL;
+
+  DataModule2.ZQuery1.SQL.Clear;
+  DataModule2.ZQuery1.SQL.Add('select * from satuan');
+  DataModule2.ZQuery1.Open;
+  ShowMessage('Data Berhasil diDelete!');
+  end
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+  Edit1.Clear;
+  Edit2.Clear;
 end;
 
 end.

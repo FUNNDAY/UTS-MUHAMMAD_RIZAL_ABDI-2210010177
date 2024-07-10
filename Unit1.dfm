@@ -28,11 +28,11 @@ object Form1: TForm1
     Caption = 'DISKRIPSI'
   end
   object Label3: TLabel
-    Left = 64
-    Top = 328
-    Width = 56
+    Left = 56
+    Top = 320
+    Width = 85
     Height = 13
-    Caption = 'CARI NAME'
+    Caption = 'MASUKKAN NAME'
   end
   object Edit1: TEdit
     Left = 136
@@ -73,6 +73,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'HAPUS'
     TabOrder = 4
+    OnClick = Button3Click
   end
   object Button4: TButton
     Left = 376
@@ -81,6 +82,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'BATAL'
     TabOrder = 5
+    OnClick = Button4Click
   end
   object DBGrid1: TDBGrid
     Left = 56
@@ -94,6 +96,7 @@ object Form1: TForm1
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
   end
   object Edit3: TEdit
     Left = 152

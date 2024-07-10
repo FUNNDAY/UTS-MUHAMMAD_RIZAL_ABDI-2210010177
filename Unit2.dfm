@@ -11,8 +11,10 @@ object DataModule2: TDataModule2
     Port = 3306
     Database = 'penjualan'
     User = 'root'
-    Protocol = 'mysql-4.1'
-    LibraryLocation = 'D:\SEMESTER 4\visual 2\uts\TUGAS UTS VISUAL\libmysql.dll'
+    Protocol = 'mysql'
+    LibraryLocation = 
+      'D:\SEMESTER 4\visual 2\uts\UTS-MUHAMMAD_RIZAL_ABDI-2210010177\li' +
+      'bmysql.dll'
     Left = 24
     Top = 24
   end
